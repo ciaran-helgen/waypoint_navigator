@@ -55,7 +55,7 @@ WaypointNavigatorNode::WaypointNavigatorNode(const ros::NodeHandle& nh,
   pose_publisher_ = nh_.advertise<geometry_msgs::PoseStamped>(
       mav_msgs::default_topics::COMMAND_POSE, 1);
   path_segments_publisher_ =
-      nh_.advertise<mav_planning_msgs::PolynomialTrajectory4D>("path_segments", 1);
+      nh_.advertise<mav_planning_msgs::PolynomialTrajectory>("path_segments", 1);
 
   // Visualization.
   path_points_marker_publisher_ = nh_.advertise<visualization_msgs::Marker>(
@@ -357,7 +357,7 @@ void WaypointNavigatorNode::publishCommands() {
   } else if (path_mode_ == "polynomial") {
     createTrajectory();
     // Publish the trajectory directly to the trajectory sampler.
-    mav_planning_msgs::PolynomialTrajectory4D msg;
+    mav_planning_msgs::PolynomialTrajectory msg;
     mav_trajectory_generation::Trajectory traj_with_yaw;
     polynomial_trajectory_.getTrajectoryWithAppendedDimension(yaw_trajectory_,
                                                               &traj_with_yaw);
