@@ -7,7 +7,7 @@
   <arg name="log_file" default="$(arg mav_name)"/>
 
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" value="$(find rotors_gazebo)/worlds/basic.world"/>
+    <arg name="world_name" value="$(find rotors_gazebo)/worlds/drone_beacon.world"/>
     <!-- <arg name="debug" value="true" /> -->
     <arg name="paused" value="false" />
     <!-- <arg name="gui" value="false" /> -->
@@ -16,7 +16,7 @@
   <group ns="$(arg mav_name)">
     <include file="$(find rotors_gazebo)/launch/spawn_mav.launch">
       <arg name="mav_name" value="$(arg mav_name)" />
-      <arg name="model" value="$(find waypoint_navigator)/descriptions/$(arg mav_name)_base_gps.xacro" />
+      <arg name="model" value="$(find waypoint_navigator)/descriptions/beacon_$(arg mav_name)_base_gps.xacro" />
       <arg name="enable_logging" value="$(arg enable_logging)" />
       <arg name="enable_ground_truth" value="$(arg enable_ground_truth)" />
       <arg name="log_file" value="$(arg log_file)"/>
