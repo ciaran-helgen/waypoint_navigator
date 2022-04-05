@@ -24,33 +24,22 @@ sudo apt-get install python-wstool python-catkin-tools ros-indigo-cmake-modules
 
 2. Set up a catkin workspace (if not already done):
 
-```
-mkdir -p ~/catkin_ws/src
-cd ~/catkin_ws
-catkin init
-catkin config --extend /opt/ros/indigo
-catkin config --cmake-args -DCMAKE_BUILD_TYPE=Release
-catkin config --merge-devel
-```
-
 3. Install the repository and its dependencies (with rosinstall):
 
 ```
 cd src
 wstool init
-wstool set --git waypoint_navigator git@github.com:ethz-asl/waypoint_navigator.git -y
+wstool set --git waypoint_navigator git@github.com:ciaran-helgen/waypoint_navigator.git -y
 wstool update
 wstool merge waypoint_navigator/install/waypoint_navigator.rosinstall
 wstool update -j8
-echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
-source ~/.bashrc
 ```
  > **Optional**: You can also install the [rviz_satellite](git@github.com:gareth-cross/rviz_satellite.git) package to visualize satellite maps in rviz for GPS co-ordinates.
  
-4. Use [catkin_build](http://catkin-tools.readthedocs.io/en/latest/verbs/catkin_build.html) to build the repository:
+4. Build the workspace
 
 ```
-catkin build
+catkin_make
 ```
 
 ## Node: waypoint_navigator
