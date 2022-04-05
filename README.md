@@ -14,17 +14,18 @@ Please feel free to contact us in case of questions, feedback, or feature ideas.
 
 ## Installation Instructions (Ubuntu)
 
-To install this package with [ROS Indigo](http://wiki.ros.org/indigo/Installation/Ubuntu) or [ROS Kinetic](http://wiki.ros.org/kinetic/Installation/Ubuntu):
-
-1. Install additional system dependencies (swap indigo for kinetic as necessary):
+1. Install additional system dependencies (replace melodic with your version as needed. The dev environment is Melodic by default):
 
 ```
-sudo apt-get install python-wstool python-catkin-tools ros-indigo-cmake-modules
+sudo apt-get install python-wstool python-catkin-tools ros-melodic-cmake-modules
 ```
-
-2. Set up a catkin workspace (if not already done):
 
 3. Install the repository and its dependencies (with rosinstall):
+- wstool init creates a blank .rosinstall file in the src folder.
+- wstool set --git ... sets the git flag for the waypoint_navigator package to my fork of the repo
+- wstool update informs wstool of the change
+- wstool merge copies the .rosinstall flags from the specified directory. This file was modified so my fork of the rotors_simulator is pulled
+- wstool update clones the packages from their specified git repos
 
 ```
 cd src
@@ -34,7 +35,6 @@ wstool update
 wstool merge waypoint_navigator/install/waypoint_navigator.rosinstall
 wstool update -j8
 ```
- > **Optional**: You can also install the [rviz_satellite](git@github.com:gareth-cross/rviz_satellite.git) package to visualize satellite maps in rviz for GPS co-ordinates.
  
 4. Build the workspace
 
