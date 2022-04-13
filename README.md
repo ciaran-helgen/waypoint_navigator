@@ -17,7 +17,7 @@ Please feel free to contact us in case of questions, feedback, or feature ideas.
 1. Install additional system dependencies (replace melodic with your version as needed. The dev environment is Melodic by default):
 
 ```
-sudo apt-get install python-wstool python-catkin-tools ros-melodic-cmake-modules
+sudo apt-get update && sudo apt-get install python-wstool python-catkin-tools ros-melodic-cmake-modules
 ```
 
 3. Install the repository and its dependencies (with rosinstall):
