@@ -17,7 +17,7 @@ Please feel free to contact us in case of questions, feedback, or feature ideas.
 1. Install additional system dependencies (replace melodic with your version as needed. The dev environment is Melodic by default):
 
 ```
-sudo apt-get update && sudo apt-get install python-wstool python-catkin-tools ros-melodic-cmake-modules
+sudo apt-get update && sudo apt-get install python-wstool python-catkin-tools ros-melodic-cmake-modules ros-melodic-gazebo-ros ros-melodic-gazebo-plugins libgoogle-glog-dev
 ```
 
 3. Install the repository and its dependencies (with rosinstall):
@@ -28,15 +28,28 @@ sudo apt-get update && sudo apt-get install python-wstool python-catkin-tools ro
 - wstool update clones the packages from their specified git repos
 
 ```
-cd src
+cd /workspace/src
 wstool init
 wstool set --git waypoint_navigator git@github.com:ciaran-helgen/waypoint_navigator.git -y
 wstool update
 wstool merge waypoint_navigator/install/waypoint_navigator.rosinstall
 wstool update -j8
 ```
- 
-4. Build the workspace
+4. Install dependent packages
+cd to the root of the workspace and use rosdep to install the remaining mising packages
+WARNING: Do not run rosdep update with sudo, it will cause permissions issues
+```
+cd /workspace
+rosdep update
+rosdep install --from-paths src --ignore-src -r -y
+```
+Clone one final missing package into the src
+```
+cd /workspace/src
+git clone git@github.com:catkin/catkin_simple.git
+```
+
+5. Build the workspace
 cd into the root of the workspace and build
 ```
 cd .. && catkin_make
