@@ -17,7 +17,7 @@ Please feel free to contact us in case of questions, feedback, or feature ideas.
 1. Install additional system dependencies (replace melodic with your version as needed. The dev environment is Melodic by default):
 
 ```
-sudo apt-get update && sudo apt-get install python-wstool python-catkin-tools ros-melodic-cmake-modules ros-melodic-gazebo-ros ros-melodic-gazebo-plugins libgoogle-glog-dev
+sudo apt-get update && sudo apt-get install python-wstool python-catkin-tools ros-melodic-cmake-modules liblapacke-dev libgoogle-glog-dev
 ```
 
 3. Install the repository and its dependencies (with rosinstall):
