@@ -37,9 +37,9 @@ wstool update -j8
 ```
  
 4. Build the workspace
-
+cd into the root of the workspace and build
 ```
-catkin_make
+cd .. && catkin_make
 ```
 
 ## Node: waypoint_navigator
